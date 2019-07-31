@@ -215,7 +215,7 @@ class CiphertextMessage(Message):
         for i in range(1, 27):
             dummy = self.apply_shift(i)
             count = 0
-            for j in dummy.split(" "):
+            for j.lower() in dummy.split(" "):
                 if j in self.get_valid_words():
                     count += 1
             if count > best:
