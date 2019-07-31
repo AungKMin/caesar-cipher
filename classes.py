@@ -6,14 +6,12 @@ def load_words(file_name):
     
     Returns: a list of valid words. Words are strings of lowercase letters.
     '''
-    print('Loading word list...')
     # inFile: file
     in_file = open(file_name, 'r')
     # line: string
     line = in_file.readline()
     # word_list: list of strings
     word_list = line.split()
-    print('  ', len(word_list), 'words loaded.')
     in_file.close()
     return word_list
 
