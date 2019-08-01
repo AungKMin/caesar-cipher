@@ -5,6 +5,7 @@ from kivy.uix.gridlayout import GridLayout
 from kivy.uix.label import Label
 from kivy.uix.textinput import TextInput
 from kivy.uix.button import Button
+from kivy.clock import Clock
 import classes
 
 
@@ -14,10 +15,10 @@ class MainScreen(GridLayout):
         self.cols = 1
 
         # Is this dynamic? The message to the user.
-        self.messageToUser = Label(text='Welcome to the Super Secret Caesar Cipher Machine!', markup=True)
+        self.messageToUser = Label(text='[size=20][b]Welcome to the [u]Super Secret Caesar Cipher Machine![/u][/b][/size]', markup=True)
         self.add_widget(self.messageToUser)
 
-        self.add_widget(Label(text='Encode'))
+        self.add_widget(Label(text='[size=16][b]Encode[/b][/size]', markup=True))
 
         # The textbox labels
         self.encodeGrid = GridLayout()
@@ -41,7 +42,7 @@ class MainScreen(GridLayout):
         self.encodeResult = Label(text='')
         self.add_widget(self.encodeResult)
 
-        self.add_widget(Label(text='Decode'))
+        self.add_widget(Label(text='[size=16][b]Decode[/b][/size]', markup=True))
 
         # The textbox label
         self.add_widget(Label(text='Text to decode: '))
@@ -66,6 +67,9 @@ class MainScreen(GridLayout):
         self.decodeGrid.add_widget(self.decodeShift)
         self.add_widget(self.decodeGrid)
 
+    def reset_greeting(self, *args):
+        self.messageToUser.text = '[size=20][b]Welcome to the [u]Super Secret Caesar Cipher Machine![/u][/b][/size]'
+
     def encode_button(self, instance):
         text = self.textEncode.text
         try:
@@ -74,7 +78,8 @@ class MainScreen(GridLayout):
             to_print = plain_object.get_message_text_encrypted()
             self.encodeResult.text = 'Cipher text:' + to_print
         except ValueError:
-            self.messageToUser.text = f'[color=ff0000]Shift must be an integer![/color]'
+            self.messageToUser.text = '[color=ff0000]Shift must be an integer![/color]'
+            Clock.schedule_once(self.reset_greeting, 2)
 
     def decode_button(self, instance):
         text = self.textDecode.text
