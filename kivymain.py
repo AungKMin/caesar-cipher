@@ -14,7 +14,7 @@ class MainScreen(GridLayout):
         super().__init__(**kwargs)
         self.cols = 1
 
-        # Is this dynamic? The message to the user.
+        # Message to the user. 
         self.messageToUser = Label(text='[size=20][b]Welcome to the [u]Super Secret Caesar Cipher Machine![/u][/b][/size]', markup=True)
         self.add_widget(self.messageToUser)
 
@@ -38,7 +38,7 @@ class MainScreen(GridLayout):
         self.submitEncode.bind(on_press=self.encode_button)
         self.add_widget(self.submitEncode)
 
-        # Make this dynamic
+        # The result of encoding
         self.encodeResult = Label(text='')
         self.add_widget(self.encodeResult)
 
