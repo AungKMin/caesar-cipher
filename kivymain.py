@@ -8,14 +8,22 @@ from kivy.uix.button import Button
 from kivy.clock import Clock
 import classes
 
+"""
+To do: 
+
+- Customize app using .kv file 
+- Make text selectable without creating TextInput objects
+"""
+
 
 class MainScreen(GridLayout):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.cols = 1
 
-        # Message to the user. 
-        self.messageToUser = Label(text='[size=20][b]Welcome to the [u]Super Secret Caesar Cipher Machine![/u][/b][/size]', markup=True)
+        # Message to the user.
+        self.messageToUser = Label(
+            text='[size=20][b]Welcome to the [u]Super Secret Caesar Cipher Machine![/u][/b][/size]', markup=True)
         self.add_widget(self.messageToUser)
 
         self.add_widget(Label(text='[size=16][b]Encode[/b][/size]', markup=True))
@@ -39,7 +47,7 @@ class MainScreen(GridLayout):
         self.add_widget(self.submitEncode)
 
         # The result of encoding
-        self.encodeResult = Label(text='')
+        self.encodeResult = TextInput(text='')
         self.add_widget(self.encodeResult)
 
         self.add_widget(Label(text='[size=16][b]Decode[/b][/size]', markup=True))
@@ -60,9 +68,9 @@ class MainScreen(GridLayout):
         self.decodeGrid = GridLayout()
         self.decodeGrid.cols = 2
         # The plain text
-        self.decodeResult = Label(text='')
+        self.decodeResult = TextInput(text='')
         # The shift used to decode
-        self.decodeShift = Label(text='')
+        self.decodeShift = TextInput(text='')
         self.decodeGrid.add_widget(self.decodeResult)
         self.decodeGrid.add_widget(self.decodeShift)
         self.add_widget(self.decodeGrid)
