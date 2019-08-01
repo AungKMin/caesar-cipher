@@ -66,34 +66,27 @@ class MainScreen(GridLayout):
         self.decodeGrid.add_widget(self.decodeShift)
         self.add_widget(self.decodeGrid)
 
-
     def encode_button(self, instance):
         text = self.textEncode.text
         try:
             shift = int(self.shiftEncode.text)
-            plainObject = classes.PlaintextMessage(text, shift)
-            toPrint = plainObject.get_message_text_encrypted()
-            self.encodeResult.text = 'Cipher text:' + toPrint
+            plain_object = classes.PlaintextMessage(text, shift)
+            to_print = plain_object.get_message_text_encrypted()
+            self.encodeResult.text = 'Cipher text:' + to_print
         except ValueError:
             self.messageToUser.text = f'[color=ff0000]Shift must be an integer![/color]'
 
     def decode_button(self, instance):
         text = self.textDecode.text
-        cipherObject = classes.CiphertextMessage(text)
-        toPrint = cipherObject.decrypt_message()
-        self.decodeResult.text = 'Plain text: ' + toPrint[1]
-        self.decodeShift.text = 'Shift used: ' + str(toPrint[0])
-
-
-
-
-
-
+        cipher_object = classes.CiphertextMessage(text)
+        to_print = cipher_object.decrypt_message()
+        self.decodeResult.text = 'Plain text: ' + to_print[1]
+        self.decodeShift.text = 'Shift used: ' + str(to_print[0])
 
 
 class MainApp(App):
-        def build(self):
-            return MainScreen()
+    def build(self):
+        return MainScreen()
 
 
 if __name__ == '__main__':
