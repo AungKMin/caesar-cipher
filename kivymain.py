@@ -145,9 +145,6 @@ class MainScreen(GridLayout):
 
         # Set up focus behavior
         self.textEncode.focus_next = self.shiftEncode
-        self.encodeResult.focus_next = self.textEncode
-        self.textDecode.focus_next = self.decodeResult
-        self.decodeShift.focus_next = self.textDecode
 
         self.keyboard = Window.request_keyboard (self.keyboard_closed, self, 'text')
 
